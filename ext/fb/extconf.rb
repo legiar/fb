@@ -45,7 +45,7 @@ def search_firebird_path
 end
 
 if RUBY_PLATFORM =~ /(mingw32|mswin32)/ and ARGV.grep(/^--with-opt-dir=/).empty?
-  opt = unquote(ENV['FIREBIRD'])    
+  opt = unquote(ENV['FIREBIRD'])
   opt = opt || read_firebird_registry
   opt = opt || search_firebird_path
   if opt
@@ -53,7 +53,7 @@ if RUBY_PLATFORM =~ /(mingw32|mswin32)/ and ARGV.grep(/^--with-opt-dir=/).empty?
   else
     puts "No any Firebird instances found in system."
     exit
-  end   
+  end
 end
 
 require 'mkmf'
@@ -73,7 +73,7 @@ case RUBY_PLATFORM
 #    $LDFLAGS.gsub!(/-arch (\w+)/) { |m| $1 == hosttype ? m : '' }
 #    CONFIG['LDSHARED'].gsub!(/-arch (\w+)/) { |m| $1 == hosttype ? m : '' }
     $CPPFLAGS += " -I/Library/Frameworks/Firebird.framework/Headers"
-    $LDFLAGS += " -framework Firebird"
+    $LDFLAGS += " -L/Library/Frameworks/Firebird.framework/Libraries"
   when /linux/
     $CFLAGS  = $CFLAGS + " -DOS_UNIX"
 end
