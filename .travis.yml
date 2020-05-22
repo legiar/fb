@@ -10,8 +10,7 @@ before_script:
   - sudo chmod 0777 /tmp/firebird
 script:
   - bundle exec rake compile:fb_ext test
-rvm:
-  - 2.4
+rvm:  
   - 2.5
   - 2.6
   - 2.7
